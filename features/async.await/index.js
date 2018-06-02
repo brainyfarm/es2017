@@ -33,6 +33,30 @@ import logger from 'util';
 
 greetMe("Olawale"); // Hi there Olawale
 
+
+
+/**
+ * We can combine two asynchronous operations too
+ */
+const greetUs = async (name1, name2) => {
+  const firstGreetings = await greetAfterFiveSeconds(name1);
+  const secondGreetings = await greetAfterFiveSeconds(name2);
+   logger.log(`${firstGreetings}, ${secondGreetings}`);
+}
+
+greetUs("Olawale", "Temitope"); // Hi there Olawale, Hi there Temitope
+
+
+/**
+ * Example with Promise.all
+ */
+
+const greetTwo = async (name1, name2) => {
+  const [myGreeting, tayosGreeting] = await Promise.all([greetAfterFiveSeconds('Olawale'), greetAfterFiveSeconds('Tayo')]);
+  logger.log(`${myGreeting}, ${tayosGreeting}`) 
+}
+
+greetTwo('Olawale', 'Tayo'); // Hi there Olawale, Hi there Tayo
 /**
  * catching Errors with async await
  * use try-catch
@@ -49,3 +73,4 @@ const greetMeError = async name => {
 
 
 greetMeError('Chike'); // I cannot greet you Chike
+
