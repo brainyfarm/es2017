@@ -48,4 +48,4 @@ const greetMeError = async name => {
 }
 
 
-greetMeError('Chike');
+greetMeError('Chike'); // I cannot greet you Chike
